@@ -39,6 +39,7 @@
 
     &:first-child {
       flex-grow: 0;
+      flex-shrink: 0;
     }
 
     height: 40px;
@@ -52,7 +53,7 @@
     border-collapse: collapse;
     display: inline-block;
     flex-grow: 1;
-    flex-shrink: 0;
+    flex-shrink: 1;
     text-align: start;
     padding-left: 16px;
   }
