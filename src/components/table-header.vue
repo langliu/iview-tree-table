@@ -2,7 +2,7 @@
   <div :class="`${prefixCls}__header`" :style="{width: `${width}`}">
     <span v-for="(item,index) in columns" :class="`${prefixCls}__th`" :key="index"
           :style="{width:`${widthArray[index]}`}">
-      <span>{{item.title}}</span>
+      <span>{{item.label}}</span>
     </span>
   </div>
 </template>
@@ -13,14 +13,14 @@
     props: {
       columns: Array,
       widthArray: Array,
-      width: String,
+      width: String
     },
     data () {
       return {
-        prefixCls: 'xdh-tree-table',
-      }
-    },
-  }
+        prefixCls: 'xdh-tree-table'
+      };
+    }
+  };
 </script>
 
 <style lang="less" scoped>
@@ -33,6 +33,10 @@
   }
 
   .xdh-tree-table__th {
+    &:last-child {
+      border-right: none;
+    }
+
     height: 40px;
     line-height: 40px;
     font-weight: 700;
@@ -45,5 +49,7 @@
     display: inline-block;
     /*flex-grow: 1;*/
     flex-shrink: 0;
+    text-align: start;
+    padding-left: 16px;
   }
 </style>

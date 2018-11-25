@@ -1,30 +1,46 @@
 <template>
-  <!--<Table border type="selection" :columns="columns10" :data="data9"></Table>-->
-  <!--<Tree :data="data2" show-checkbox :render="renderContent"></Tree>-->
-  <!--<tree-table :columns="columns10" :data="data9"></tree-table>-->
   <div class="table">
-    <!--<table-header :columns="columns" :width-array="widthArray"></table-header>-->
-    <iview-tree-table>
-      <iview-tree-table-column prop="id" label="ID">
+    <iview-tree-table show-checkbox tree-width="800px" :tree-data="treeData">
+      <iview-tree-table-column prop="id" label="ID" width="200px">
         <template slot-scope="scope">
-          {{scope}}
+          <Button type="success">{{scope.node.data.id}}</Button>
         </template>
       </iview-tree-table-column>
+      <iview-tree-table-column prop="email" label="邮箱" width="300px"></iview-tree-table-column>
     </iview-tree-table>
   </div>
 </template>
 
 <script>
-  import expandRow from '../components/table-expand.vue'
-  import TreeTable from 'iview-tree-table'
-  import iviewTreeTable from '../components/iview-tree-table'
-  import tableHeader from '../components/table-header'
-  import iviewTreeTableColumn from '../components/iview-tree-table-column'
+  import expandRow from '../components/table-expand.vue';
+  import TreeTable from 'iview-tree-table';
+  import iviewTreeTable from '../components/iview-tree-table';
+  import tableHeader from '../components/table-header';
+  import iviewTreeTableColumn from '../components/iview-tree-table-column';
 
   export default {
     components: {expandRow, TreeTable, iviewTreeTable, tableHeader, iviewTreeTableColumn},
     data () {
       return {
+        treeData: [{
+          data: {name: 'jack', title: 'tom', email: 'allen', id: 123, level: 0},
+          children: [
+            {
+              data: {name: 'jack', title: 'tom', email: 'allen', id: 456, level: 1},
+              children: [
+                {
+                  data: {name: 'jack', title: 'tom', email: 'allen', id: 456, level: 2}
+                },
+                {
+                  data: {name: 'jack', title: 'tom', email: 'allen', id: 456, level: 2}
+                }
+              ]
+            },
+            {
+              data: {name: 'jack', title: 'tom', email: 'allen', id: 456, level: 1}
+            }
+          ]
+        }],
         data2: [
           {
             title: 'parent 1',
@@ -35,26 +51,26 @@
                 expand: true,
                 children: [
                   {
-                    title: 'leaf 1-1-1',
+                    title: 'leaf 1-1-1'
                   },
                   {
-                    title: 'leaf 1-1-2',
-                  },
-                ],
+                    title: 'leaf 1-1-2'
+                  }
+                ]
               },
               {
                 title: 'parent 1-2',
                 expand: true,
                 children: [
                   {
-                    title: 'leaf 1-2-1',
+                    title: 'leaf 1-2-1'
                   },
                   {
-                    title: 'leaf 1-2-1',
-                  },
-                ],
-              },
-            ],
+                    title: 'leaf 1-2-1'
+                  }
+                ]
+              }
+            ]
           }],
         columns10: [
           {
@@ -63,23 +79,23 @@
             render: (h, params) => {
               return h(expandRow, {
                 props: {
-                  row: params.row,
-                },
-              })
-            },
+                  row: params.row
+                }
+              });
+            }
           },
           {
             title: 'Name',
-            key: 'name',
+            key: 'name'
           },
           {
             title: 'Age',
-            key: 'age',
+            key: 'age'
           },
           {
             title: 'Address',
-            key: 'address',
-          },
+            key: 'address'
+          }
         ],
         data9: [
           {
@@ -91,7 +107,7 @@
             birthday: '1991-05-14',
             book: 'Steve Jobs',
             movie: 'The Prestige',
-            music: 'I Cry',
+            music: 'I Cry'
           },
           {
             name: 'Jim Green',
@@ -102,7 +118,7 @@
             birthday: '1989-03-18',
             book: 'My Struggle',
             movie: 'Roman Holiday',
-            music: 'My Heart Will Go On',
+            music: 'My Heart Will Go On'
           },
           {
             name: 'Joe Black',
@@ -113,7 +129,7 @@
             birthday: '1992-01-31',
             book: 'Win',
             movie: 'Jobs',
-            music: 'Don’t Cry',
+            music: 'Don’t Cry'
           },
           {
             name: 'Jon Snow',
@@ -124,27 +140,27 @@
             birthday: '1988-7-25',
             book: 'A Dream in Red Mansions',
             movie: 'A Chinese Ghost Story',
-            music: 'actor',
-          },
+            music: 'actor'
+          }
         ],
         columns: [
           '姓名',
           '标题',
-          '邮箱',
+          '邮箱'
         ],
         widthArray: [
           '20vw',
           '20vw',
-          '30vw',
-        ],
-      }
+          '30vw'
+        ]
+      };
     },
     methods: {
       renderContent (h, {root, node, data}) {
-        return h('Table', this.data9)
-      },
-    },
-  }
+        return h('Table', this.data9);
+      }
+    }
+  };
 
 </script>
 

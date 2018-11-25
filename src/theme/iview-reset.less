@@ -7,7 +7,60 @@
 
 .ivu-tree > ul > li {
   border: 1px solid #dcdfe6;
+
   & > ul {
-    border-top: 1px solid #dcdfe6;
+    border-top: none;
+  }
+}
+
+.ivu-checkbox + span, .ivu-checkbox-wrapper + span {
+  margin-right: 0;
+}
+
+.ivu-tree .ivu-tree-children {
+  width: 100%;
+  padding-left: 0;
+  border-top: 1px solid #dcdfe6;
+
+  &:first-child {
+    border: none;
+  }
+
+  .ivu-tree-children {
+    & > li > span:first-child {
+      margin-left: 18px;
+    }
+
+    .ivu-tree-children {
+      & > li > span:first-child {
+        margin-left: 36px;
+      }
+
+      .ivu-tree-children {
+        & > li > span:first-child {
+          margin-left: 54px;
+        }
+
+        .ivu-tree-children {
+          & > li > span:first-child {
+            margin-left: 72px;
+          }
+
+          .ivu-tree-children {
+            & > li > span:first-child {
+              margin-left: 90px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .xdh__tr {
+    align-items: center;
+
+    .xdh-tree-table__td:last-child {
+      border-right: none;
+    }
   }
 }
