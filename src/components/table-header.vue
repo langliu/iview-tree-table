@@ -37,6 +37,10 @@
       border-right: none;
     }
 
+    &:first-child {
+      flex-grow: 0;
+    }
+
     height: 40px;
     line-height: 40px;
     font-weight: 700;
@@ -47,7 +51,7 @@
     word-break: keep-all;
     border-collapse: collapse;
     display: inline-block;
-    /*flex-grow: 1;*/
+    flex-grow: 1;
     flex-shrink: 0;
     text-align: start;
     padding-left: 16px;
