@@ -1,12 +1,13 @@
 <template>
   <div class="table">
-    <iview-tree-table show-checkbox tree-width="800px" :tree-data="treeData">
+    <iview-tree-table show-checkbox :tree-data="treeData">
       <iview-tree-table-column prop="id" label="ID" width="200px">
         <template slot-scope="scope">
           <Button type="success">{{scope.node.data.id}}</Button>
         </template>
       </iview-tree-table-column>
       <iview-tree-table-column prop="email" label="邮箱" width="300px"></iview-tree-table-column>
+      <iview-tree-table-column prop="title" label="标题" width="300px"></iview-tree-table-column>
     </iview-tree-table>
   </div>
 </template>
@@ -169,5 +170,9 @@
     width: 80vw;
     margin: 0 auto;
     display: flex;
+
+    & > div {
+      width: 100%;
+    }
   }
 </style>

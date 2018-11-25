@@ -3,8 +3,7 @@
     <table-header :columns="columns" :width-array="headerWidthArray"></table-header>
     <Tree :show-checkbox="showCheckbox" multiple :data="treeData" :render="renderContent"
           :style="{width:treeWidth}"></Tree>
-
-    <div style="display: inline-block;" :class="`__hidden`">
+    <div style="display: none;" :class="`__hidden`">
       <slot></slot>
     </div>
   </div>
@@ -22,16 +21,15 @@
   export default {
     name: 'iview-tree-table',
     components: {tableHeader},
-    props: {...Tree.props, treeWidth:String,treeData:Array},
+    props: {...Tree.props, treeWidth: {type: String, default: '100%'}, treeData: Array},
     data () {
       return {
         columns: [],
-        widthArray: [],
+        widthArray: []
       };
     },
     mounted () {
-      console.log(Tree.props);
-      console.log(this.showCheckbox);
+      this.getColumnLevel(this.treeData);
     },
     computed: {
       headerWidthArray () {
@@ -133,17 +131,21 @@
           }
         });
       },
-      getColumnLevel () {
-        const keys = this.columns.map((item) => {
-          return item.prop;
+      /**
+       * 给树添加层级属性
+       * @param {array} data 树数据
+       * @param {number} level 层级
+       */
+      getColumnLevel (data, level = 0) {
+        data.forEach((item) => {
+          if (Object.getOwnPropertyDescriptor(item, 'children')) {
+            this.getColumnLevel(item['children'], level + 1);
+          }
+          item.data['dep'] = level;
         });
-        console.log(keys);
-        // for () ;
       },
       renderContent (h, {node, data}) {
-        this.getColumnLevel();
-        console.log(data);
-        let widthArray = this.getColumnWidthArray(data.data.level);
+        let widthArray = this.getColumnWidthArray(data.data.dep);
         const columns = this.columns.map((column, index) => {
           return column.renderCell.call(this._renderProxy, h, {node}, widthArray[index]);
         });
