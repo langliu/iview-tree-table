@@ -60,7 +60,12 @@
     align-items: center;
     flex-grow: 1;
     flex-shrink: 1;
-
+    width: 0;
+    
+    .xdh-tree-table__td:first-child {
+        flex-shrink: 0;
+    }
+    
     .xdh-tree-table__td:not(:first-child) {
       flex-grow: 1;
     }
