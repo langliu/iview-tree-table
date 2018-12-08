@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: 'ivew-tree-table-column',
+    name: 'iview-tree-table-column',
     props: {
       prop: String,
       label: String,
@@ -41,5 +41,6 @@
     border-right: 1px solid #dcdfe6;
     text-align: start;
     padding-left: 16px;
+    min-width: 100px;
   }
 </style>

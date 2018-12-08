@@ -12,6 +12,7 @@
 <script>
   import tableHeader from './table-header';
   import { Tree } from 'iview';
+  import './iview-reset.less';
 
   const BORDER_WIDTH = 1;
   const ARROW_WIDTH = 24;

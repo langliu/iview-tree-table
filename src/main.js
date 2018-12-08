@@ -6,11 +6,14 @@ import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 import './theme/iview-reset.less';
 
+import iViewTreeTable from './components/iview-tree-table/index';
+
 Vue.use(iView);
+Vue.use(iViewTreeTable);
 Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app');

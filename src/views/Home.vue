@@ -15,12 +15,12 @@
 <script>
   import expandRow from '../components/table-expand.vue';
   import TreeTable from 'iview-tree-table';
-  import iviewTreeTable from '../components/iview-tree-table';
-  import tableHeader from '../components/table-header';
-  import iviewTreeTableColumn from '../components/iview-tree-table-column';
+  // import iviewTreeTable from '../components/iview-tree-table/src/iview-tree-table';
+  // import tableHeader from '../components/iview-tree-table/src/table-header';
+  // import iviewTreeTableColumn from '../components/iview-tree-table/src/iview-tree-table-column';
 
   export default {
-    components: {expandRow, TreeTable, iviewTreeTable, tableHeader, iviewTreeTableColumn},
+    components: {expandRow, TreeTable},
     data () {
       return {
         treeData: [{
